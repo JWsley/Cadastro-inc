@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Ionic App</title>
+
+  <base href="/" />
+
+  <meta name="color-scheme" content="light dark" />
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+</head>
+
+<body>
+  <script>
+    function format_cpf(){
+      var cpf = document.getElementById('Cpf')
+
+
+      console.log(cpf.value)
+      console.log(cpf.valueOf())
+
+        if (cpf.value.length == 3 || cpf.value.length == 7){
+        cpf.value += '.'
+      }else if (cpf.value.length == 11){
+        cpf.value += '-'
+      }
+
+      }
+
+      function format_number(){
+        var numb = document.getElementById('num')
+
+
+
+        if(numb.value == 0){
+          numb.value += '('
+        }else if (numb.value.length == 3){
+          numb.value += ')'
+        }else if (numb.value.length == 9){
+          numb.value += '-'
+        }
+
+
+      }
+
+
+    // 000″.”000″.”000-00.
+  </script>
+
+  <app-root></app-root>
+</body>
+
+</html>

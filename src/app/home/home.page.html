@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+      <ion-title class="title">CADASTRO DE <br> USUARIO</ion-title>
+
+
+
+<form #form="ngForm" [formGroup]="fgroup" (ngSubmit)="submitForm()">
+
+  <ion-item>
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input formControlName="nome" pattern="([aA-zZ]+)"></ion-input>
+            <div *ngIf="fgroup.controls.nome.errors">
+              <small *ngIf="fgroup.controls.nome.errors.required"> Este campo é obrigatório!</small>
+              <small *ngIf="fgroup.controls.nome.errors.minlength"> Digite no minimo 3 caracteres!</small>
+              <small *ngIf="fgroup.controls.nome.errors.maxlength"> Nome muito grande. tenta abreviar ai...</small>
+            </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">CPF</ion-label>
+      <ion-input formControlName="cpf" pattern="([aA-zZ]+)" id="Cpf" type="text" maxlength="14" onkeyup="format_cpf()" ></ion-input>
+      <small  *ngIf="(fgroup.get('cpf').errors?.required || fgroup.get('cpf').errors?.minLength ||  fgroup.get('cpf').errors?.maxLength || fgroup.get('cpf').errors?.pattern) && form.submitted">o Formato do CPF está invalido</small>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" >Numero</ion-label>
+    <ion-input id="num"  formControlName="numero" maxLength="14" onkeyup="format_number()"></ion-input>
+    <small *ngIf="(fgroup.get('numero').errors?.required || fgroup.get('numero').errors?.minLength ||  fgroup.get('numero').errors?.maxLength || fgroup.get('numero').errors?.pattern) && form.submitted"> O formato do numero está errado.</small>
+  </ion-item>
+
+  <ion-button  type="submitForm" [disabled]="!fgroup.valid">send</ion-button>
+
+
+
+
+</form>
+
+
+
+</ion-content>
